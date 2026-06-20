@@ -40,9 +40,9 @@ class RevisionSaldos:
         self.estado = "CUENTA_ACTIVA"
 
     def revisar_total_saldos(self):
-        total_multas = sum(recurso.calcular_penalizacion() for recurso in self.registro.obtener_lista_recursos())
+        total_multas = sum(recurso.calcular_pago() for recurso in self.registro.lista_recursos())
         if total_multas > 15:
             self.estado = "CUENTA_SUSPENDIDA"
-        elif self.registro.bibliotecario_responsable["codigo_usuario"].startswith("aux") and any(isinstance(recurso, UsoSalaEstudio) and recurso.alumnos_espera > 10 for recurso in self.registro.obtener_lista_recursos()):
+        elif recurso.alumnos_espera > 10 for recurso in self.registro.obtener_lista_recursos()):
             self.estado = "CUENTA_SUSPENDIDA"
 
